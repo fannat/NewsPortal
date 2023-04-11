@@ -1,0 +1,119 @@
+C:\Users\User\Desktop\python\проекты_по учебе\pythonProject\newstrue>python manage.py makemigrations
+Migrations for 'newstrueapp':
+  newstrueapp\migrations\0001_initial.py
+    - Create model Author
+    - Create model Cathegory
+    - Create model Post
+    - Create model PostCathegory
+    - Add field cathegories to post
+    - Create model Comment
+
+C:\Users\User\Desktop\python\проекты_по учебе\pythonProject\newstrue>python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, newstrueapp, sessions
+Running migrations:
+  Applying newstrueapp.0001_initial... OK
+
+C:\Users\User\Desktop\python\проекты_по учебе\pythonProject\newstrue>python manage.py shell
+
+>>> from django.contrib.auth.models import User
+>>> from newstrueapp.models import Author, Cathegory, Post, PostCathegory, Comment
+
+#Создаю юзеров:
+>>> user_1 = User.objects.create_user('username = Alexandr', email = 'Al@mail.ru')
+>>> user_2 = User.objects.create_user(username = 'Nina', email = 'Nina@mail.ru')
+
+#Добавляю невставленное имя
+>>> Alexander = Author.objects.create(user = user_1)
+>>> Nina = Author.objects.create(user = user_2)
+>>> person = User.objects.get(id = 5)
+>>> person.username = 'Alexander'
+>>> person.save()
+
+#Создаю категории
+>>> cathegory_1 = Cathegory.objects.create(cathegory_name = 'sport')
+>>> cathegory_2 = Cathegory.objects.create(cathegory_name = 'nature')
+>>> cathegory_3 = Cathegory.objects.create(cathegory_name = 'beauty')
+>>> cathegory_4 = Cathegory.objects.create(cathegory_name = 'music')
+
+#Создаю посты
+>>> post_1 = Post.objects.create(head_post = 'my plans', text_post = "Сегодня я собираюсь играть в футбол с друзьями.", type_post = 'article', author = Alexander)
+>>> post_2 = Post.objects.create(head_post = "винтажная мода", text_post = "Последнее время винтажная мода становится все популярнее. На аукционах продаются старинные сумки шанель, а молодежь одевается на праздничные мероприятия на раныках.", type_post = 'article', author = Nina)
+>>> post_2 = Post.objects.create(head_post = "вулканическая пыль", text_post = "Извержение вулкана привело к тому, что самолеты из Новой Зеландии перестали летать.", type_post = 'news', author = Nina)
+
+#Присваиваю категории
+>>> postcathegory_1 = PostCathegory.objects.create(post = post_1, cathegory = cathegory_3)
+>>> postcathegory_1 = PostCathegory.objects.create(post = post_1, cathegory = cathegory_1)
+>>> postcathegory_1 = PostCathegory.objects.create(post = post_2, cathegory = cathegory_3)
+>>> postcathegory_1 = PostCathegory.objects.create(post = post_3, cathegory = cathegory_2)
+
+#исправляю ошибку, связанную с дублированием post_2
+
+>>> post_3 = Post.objects.get(id = 3)
+>>> postcathegory_3 = PostCathegory.objects.create(post = post_3, cathegory = cathegory_2)
+>>> PostCathegory.objects.filter(id = 3).delete()
+(1, {'newstrueapp.PostCathegory': 1})
+>>> post_2 = Post.objects.get(id = 2)
+>>> PostCathegory.objects.create(post = post_2, cathegory = cathegory_3)
+<PostCathegory: PostCathegory object (6)>
+
+#Комментарии
+>>> comment_1 = Comment.objects.create(post=post_1, user = user_1, text_comment = 'cool!')
+>>> comment_2 = Comment.objects.create(post=post_1, user = user_2, text_comment = 'wow!')
+>>> comment_3 = Comment.objects.create(post=post_3, user = user_1, text_comment = 'absolutely agree')
+>>> comment_4 = Comment.objects.create(post=post_3, user = user_2, text_comment = "Don't like")
+
+#Лайки
+>>> post_1.like()
+>>> post_1.like()
+>>> post_2.dislike()
+>>> post_2.like()
+>>> post_3.like()
+>>> post_3.like()
+>>> post_3.like()
+>>> post_3.like()
+>>> post_2.like()
+>>> comment_1.like()
+>>> comment_1.like()
+>>> comment_1.like()
+>>> comment_2.like()
+>>> comment_2.like()
+>>> comment_2.dislike()
+>>> comment_3.dislike()
+>>> comment_4.like()
+
+#возвращаюсь к работе после перерыва, импортирую заново:
+>>> from django.contrib.auth.models import User
+>>> from newstrueapp.models import Author, Cathegory, Post, PostCathegory, Comment
+
+#Рейтинг
+>>> Alexander = Author.objects.get(id = 1)
+>>> Alexander.update_rating()
+
+>>> Comment_1 = Comment.objects.get(id = 1)
+>>> Comment_1.dislike()
+>>> Alexander.update_rating()
+>>> Nina = Author.objects.get(id=2)
+>>> Nina.update_rating()
+
+#Лучший автор
+>>> best_author = Author.objects.all().order_by('rating_author')
+>>> print(best_author)
+<QuerySet [<Author: Author object (1)>, <Author: Author object (2)>]>
+>>> len(best_author)
+2
+>>> print(best_author[1].user.username, best_author[1].rating_author)
+Nina 17
+
+#Лучшая статья
+>>> best_article = Post.objects.filter(type_post = 'article').order_by('-rating_post')[0]
+>>> print(best_article.date_post, best_article.author.user.username, best_article.head_post, best_article.rating_post, best_article.preview())
+2023-01-23 13:38:42.110626+00:00 Alexander my plans 2 Сегодня я собираюсь играть в футбол с друзьями.
+
+#Комментарии к статье
+>>> for comment in Comment.objects.filter(post = best_article):
+...     print(comment.date_comment, comment.user.username, comment.rating_comment, comment.text_comment)
+...
+2023-01-24 12:43:40.636929+00:00 Alexander 2 cool!
+2023-01-24 12:44:03.232797+00:00 Nina 1 wow!
+>>>
