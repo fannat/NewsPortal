@@ -7,7 +7,7 @@ class PostFilter(FilterSet):
     Tag = ModelMultipleChoiceFilter(
         field_name='PostCategory__category',
         queryset=Category.objects.all(),
-        label='тэги',
+        label='tags',
         conjoined=False,
     )
 
@@ -21,9 +21,3 @@ class PostFilter(FilterSet):
             }
         )
     )
-
-    class Meta:
-        model = Post
-        fields = {
-            'head_post': ['icontains'],
-        }

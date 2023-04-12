@@ -43,7 +43,7 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     rating = models.IntegerField(default=0)
     content = models.TextField()
-
+    text_post = models.TextField()
     author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='post')
     categories = models.ManyToManyField(Category, through='PostCategory')
 

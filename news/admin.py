@@ -8,7 +8,6 @@ def nullfy_rating_post(modeladmin, request, queryset):
 
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('date_post', 'author', 'popular', 'head_post', 'type_post', 'rating_post',)
     search_fields = ('type_post', 'categories__category_name')
     actions = [nullfy_rating_post]
 

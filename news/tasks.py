@@ -1,12 +1,13 @@
 from celery import shared_task
 from news.signals import post_for_subscribers
-from .models import PostCategory, SubscribersCategory, Post, Cathegory
-from newstrue import settings
+from .models import PostCategory, SubscribersCategory, Post, Category
+from NewsPaper import settings
 from django.core.mail import EmailMultiAlternatives, send_mail
 from django.template.loader import render_to_string
 
 import datetime
 import time
+
 
 @shared_task
 def send_post_for_subscribers_celery(post_pk):
