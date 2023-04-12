@@ -16,7 +16,6 @@ from django.core.cache import cache
 
 class PostList(ListView):
     model = Post
-    ordering = '-date_post'
     template_name = 'news.html'
     context_object_name = 'posts'
     paginate_by = 10
@@ -51,7 +50,7 @@ class PostDetail(DetailView):
         return obj
 
 class PostCreate(PermissionRequiredMixin, CreateView):
-    permission_required = ('news.add_post')
+    permission_required = 'news.add_post'
     form_class = PostForm
     model = Post
     template_name = 'post_edit.html'
@@ -65,6 +64,7 @@ class PostCreate(PermissionRequiredMixin, CreateView):
         post = form.save()
         send_post_for_subscribers_celery.delay(post.pk)
         return super().form_valid(form)
+
 
 class PostUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     permission_required = ('news.change_post',)

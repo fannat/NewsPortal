@@ -11,13 +11,3 @@ class PostFilter(FilterSet):
         conjoined=False,
     )
 
-    TimeAdding = DateFilter(
-        'date_post',
-        lookup_expr='gt',
-        label='Дата не раньше',
-        widget=DateInput(
-            attrs={
-                'type': 'date'
-            }
-        )
-    )

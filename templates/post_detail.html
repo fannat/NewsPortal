@@ -13,16 +13,15 @@
     <h1>{{ post.head_post }}</h1>
     <hr>{{ post.type_post }}
     <hr>{{ post.text_post| censor }}
-    <hr>{{ post.date_post }}
 
         <h5>
-            {% for cat in cathegory %}
-          <h5>  {{cat.cathegory__cathegory_name}}</h5>
+            {% for cat in category %}
+          <h5>  {{cat.category__category_name}}</h5>
 
-            {% if cat.cathegory not in subscribed %}
-                          <button><a href="{% url 'subscribe' cat.cathegory %}">Подписаться на новости категории</a></button>
+            {% if cat.category not in subscribed %}
+                          <button><a href="{% url 'subscribe' cat.category %}">Подписаться на новости категории</a></button>
             {% else %}
-                          <button><a href="{% url 'unsubscribe' cat.cathegory %}">Отписаться от новостей категории</a></button>
+                          <button><a href="{% url 'unsubscribe' cat.category %}">Отписаться от новостей категории</a></button>
                 {% endif %}
         </h5>
 {% endfor %}

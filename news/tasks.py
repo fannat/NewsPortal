@@ -29,7 +29,7 @@ def week_post():
     day_week_ago = today - datetime.timedelta(days=7)
     posts = Post.objects.filter(date_post__gte=day_week_ago)
     categories = set(posts.values_list('categories__category_name', flat=True))
-    subscribers = set(Cathegory.objects.filter(category_name__in=categories).values_list('subscribers__email', flat=True))
+    subscribers = set(Category.objects.filter(category_name__in=categories).values_list('subscribers__email', flat=True))
 
     html_content = render_to_string('week_posts.html',{
             'link': f'http://127.0.0.1:8000',

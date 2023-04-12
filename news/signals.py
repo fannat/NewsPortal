@@ -46,6 +46,3 @@ def stop_news(sender, instance, **kwargs):
     author = instance.author
     now = datetime.datetime.now()
     day = now - datetime.timedelta(days=1)
-    posts = Post.objects.filter(author = author, date_post__gte=day)
-    if len(posts) > 10:
-        raise Exception('Вы не можете публиковать больше трех постов в день!')
