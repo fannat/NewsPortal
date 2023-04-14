@@ -310,3 +310,466 @@ Traceback (most recent call last):
     return Database.Cursor.execute(self, query, params)
 django.db.utils.OperationalError: no such table: news_post
 2023-04-13 03:40:14,604 ERROR "GET / HTTP/1.1" 500 179741 C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\servers\basehttp.py None
+2023-04-13 03:42:23,617 ERROR Internal Server Error: / C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\utils\log.py (<class 'django.db.utils.OperationalError'>, OperationalError('no such table: news_post'), <traceback object at 0x000002A5E695EF00>)
+Traceback (most recent call last):
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\sqlite3\base.py", line 357, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: news_post
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\utils\decorators.py", line 134, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\list.py", line 174, in get
+    context = self.get_context_data()
+  File "C:\Users\user\Desktop\NewsPortal\news\views.py", line 29, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\list.py", line 128, in get_context_data
+    paginator, page, queryset, is_paginated = self.paginate_queryset(
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\list.py", line 73, in paginate_queryset
+    page = paginator.page(page_number)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\paginator.py", line 75, in page
+    number = self.validate_number(number)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\paginator.py", line 53, in validate_number
+    if number > self.num_pages:
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\paginator.py", line 102, in num_pages
+    if self.count == 0 and not self.allow_empty_first_page:
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\paginator.py", line 96, in count
+    return c()
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\query.py", line 621, in count
+    return self.query.get_count(using=self.db)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\sql\query.py", line 559, in get_count
+    return obj.get_aggregation(using, ["__count"])["__count"]
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\sql\query.py", line 544, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\sql\compiler.py", line 1398, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\sqlite3\base.py", line 357, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: news_post
+2023-04-13 03:42:23,708 ERROR "GET / HTTP/1.1" 500 179741 C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\servers\basehttp.py None
+2023-04-13 03:46:08,156 ERROR Internal Server Error: / C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\utils\log.py (<class 'django.db.utils.OperationalError'>, OperationalError('no such table: news_post'), <traceback object at 0x000002294AE95EC0>)
+Traceback (most recent call last):
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\sqlite3\base.py", line 357, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: news_post
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\utils\decorators.py", line 134, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\list.py", line 174, in get
+    context = self.get_context_data()
+  File "C:\Users\user\Desktop\NewsPortal\news\views.py", line 29, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\list.py", line 128, in get_context_data
+    paginator, page, queryset, is_paginated = self.paginate_queryset(
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\list.py", line 73, in paginate_queryset
+    page = paginator.page(page_number)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\paginator.py", line 75, in page
+    number = self.validate_number(number)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\paginator.py", line 53, in validate_number
+    if number > self.num_pages:
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\paginator.py", line 102, in num_pages
+    if self.count == 0 and not self.allow_empty_first_page:
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\paginator.py", line 96, in count
+    return c()
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\query.py", line 621, in count
+    return self.query.get_count(using=self.db)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\sql\query.py", line 559, in get_count
+    return obj.get_aggregation(using, ["__count"])["__count"]
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\sql\query.py", line 544, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\sql\compiler.py", line 1398, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\sqlite3\base.py", line 357, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: news_post
+2023-04-13 03:46:08,187 ERROR "GET / HTTP/1.1" 500 179738 C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\servers\basehttp.py None
+2023-04-13 03:55:59,982 ERROR Internal Server Error: / C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\utils\log.py (<class 'django.db.utils.OperationalError'>, OperationalError('no such table: news_post'), <traceback object at 0x000001A9F4E6F640>)
+Traceback (most recent call last):
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\sqlite3\base.py", line 357, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: news_post
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\utils\decorators.py", line 134, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\list.py", line 174, in get
+    context = self.get_context_data()
+  File "C:\Users\user\Desktop\NewsPortal\news\views.py", line 29, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\list.py", line 128, in get_context_data
+    paginator, page, queryset, is_paginated = self.paginate_queryset(
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\list.py", line 73, in paginate_queryset
+    page = paginator.page(page_number)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\paginator.py", line 75, in page
+    number = self.validate_number(number)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\paginator.py", line 53, in validate_number
+    if number > self.num_pages:
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\paginator.py", line 102, in num_pages
+    if self.count == 0 and not self.allow_empty_first_page:
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\paginator.py", line 96, in count
+    return c()
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\query.py", line 621, in count
+    return self.query.get_count(using=self.db)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\sql\query.py", line 559, in get_count
+    return obj.get_aggregation(using, ["__count"])["__count"]
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\sql\query.py", line 544, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\sql\compiler.py", line 1398, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\sqlite3\base.py", line 357, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: news_post
+2023-04-13 03:55:59,998 ERROR "GET / HTTP/1.1" 500 179738 C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\servers\basehttp.py None
+2023-04-13 04:05:08,949 ERROR Internal Server Error: / C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\utils\log.py (<class 'TypeError'>, TypeError('__init__() takes 1 positional argument but 2 were given'), <traceback object at 0x000001FFBF372080>)
+Traceback (most recent call last):
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\utils\decorators.py", line 134, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\base.py", line 96, in view
+    self = cls(**initkwargs)
+  File "C:\Users\user\Desktop\NewsPortal\news\views.py", line 24, in __init__
+    super().__init__(kwargs)
+TypeError: __init__() takes 1 positional argument but 2 were given
+2023-04-13 04:05:08,949 ERROR "GET / HTTP/1.1" 500 79576 C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\servers\basehttp.py None
+2023-04-13 04:06:35,727 ERROR Internal Server Error: / C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\utils\log.py (<class 'django.db.utils.OperationalError'>, OperationalError('no such table: news_post'), <traceback object at 0x000001C1D70A6600>)
+Traceback (most recent call last):
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\sqlite3\base.py", line 357, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: news_post
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\utils\decorators.py", line 134, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\list.py", line 174, in get
+    context = self.get_context_data()
+  File "C:\Users\user\Desktop\NewsPortal\news\views.py", line 29, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\list.py", line 128, in get_context_data
+    paginator, page, queryset, is_paginated = self.paginate_queryset(
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\list.py", line 73, in paginate_queryset
+    page = paginator.page(page_number)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\paginator.py", line 75, in page
+    number = self.validate_number(number)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\paginator.py", line 53, in validate_number
+    if number > self.num_pages:
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\paginator.py", line 102, in num_pages
+    if self.count == 0 and not self.allow_empty_first_page:
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\paginator.py", line 96, in count
+    return c()
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\query.py", line 621, in count
+    return self.query.get_count(using=self.db)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\sql\query.py", line 559, in get_count
+    return obj.get_aggregation(using, ["__count"])["__count"]
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\sql\query.py", line 544, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\sql\compiler.py", line 1398, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\sqlite3\base.py", line 357, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: news_post
+2023-04-13 04:06:35,743 ERROR "GET / HTTP/1.1" 500 179690 C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\servers\basehttp.py None
+2023-04-13 04:08:21,953 ERROR Internal Server Error: / C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\utils\log.py (<class 'django.db.utils.OperationalError'>, OperationalError('no such table: news_post'), <traceback object at 0x0000027630569880>)
+Traceback (most recent call last):
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\sqlite3\base.py", line 357, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: news_post
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\utils\decorators.py", line 134, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\list.py", line 174, in get
+    context = self.get_context_data()
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\list.py", line 128, in get_context_data
+    paginator, page, queryset, is_paginated = self.paginate_queryset(
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\list.py", line 73, in paginate_queryset
+    page = paginator.page(page_number)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\paginator.py", line 75, in page
+    number = self.validate_number(number)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\paginator.py", line 53, in validate_number
+    if number > self.num_pages:
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\paginator.py", line 102, in num_pages
+    if self.count == 0 and not self.allow_empty_first_page:
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\paginator.py", line 96, in count
+    return c()
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\query.py", line 621, in count
+    return self.query.get_count(using=self.db)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\sql\query.py", line 559, in get_count
+    return obj.get_aggregation(using, ["__count"])["__count"]
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\sql\query.py", line 544, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\sql\compiler.py", line 1398, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\sqlite3\base.py", line 357, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: news_post
+2023-04-13 04:08:21,968 ERROR "GET / HTTP/1.1" 500 175898 C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\servers\basehttp.py None
+2023-04-13 04:09:53,180 ERROR Internal Server Error: / C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\utils\log.py (<class 'django.db.utils.OperationalError'>, OperationalError('no such table: news_post'), <traceback object at 0x0000023577D78780>)
+Traceback (most recent call last):
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\sqlite3\base.py", line 357, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: news_post
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\utils\decorators.py", line 134, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\list.py", line 174, in get
+    context = self.get_context_data()
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\list.py", line 128, in get_context_data
+    paginator, page, queryset, is_paginated = self.paginate_queryset(
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\list.py", line 73, in paginate_queryset
+    page = paginator.page(page_number)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\paginator.py", line 75, in page
+    number = self.validate_number(number)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\paginator.py", line 53, in validate_number
+    if number > self.num_pages:
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\paginator.py", line 102, in num_pages
+    if self.count == 0 and not self.allow_empty_first_page:
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\paginator.py", line 96, in count
+    return c()
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\query.py", line 621, in count
+    return self.query.get_count(using=self.db)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\sql\query.py", line 559, in get_count
+    return obj.get_aggregation(using, ["__count"])["__count"]
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\sql\query.py", line 544, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\sql\compiler.py", line 1398, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\sqlite3\base.py", line 357, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: news_post
+2023-04-13 04:09:53,198 ERROR "GET / HTTP/1.1" 500 175898 C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\servers\basehttp.py None
+2023-04-13 04:14:24,444 ERROR Internal Server Error: / C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\utils\log.py (<class 'django.db.utils.OperationalError'>, OperationalError('no such table: news_post'), <traceback object at 0x0000024C1203C500>)
+Traceback (most recent call last):
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\sqlite3\base.py", line 357, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: news_post
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\handlers\exception.py", line 56, in inner
+    response = get_response(request)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\utils\decorators.py", line 134, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\list.py", line 174, in get
+    context = self.get_context_data()
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\list.py", line 128, in get_context_data
+    paginator, page, queryset, is_paginated = self.paginate_queryset(
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\views\generic\list.py", line 73, in paginate_queryset
+    page = paginator.page(page_number)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\paginator.py", line 75, in page
+    number = self.validate_number(number)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\paginator.py", line 53, in validate_number
+    if number > self.num_pages:
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\paginator.py", line 102, in num_pages
+    if self.count == 0 and not self.allow_empty_first_page:
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\paginator.py", line 96, in count
+    return c()
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\query.py", line 621, in count
+    return self.query.get_count(using=self.db)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\sql\query.py", line 559, in get_count
+    return obj.get_aggregation(using, ["__count"])["__count"]
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\sql\query.py", line 544, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\models\sql\compiler.py", line 1398, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\db\backends\sqlite3\base.py", line 357, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: news_post
+2023-04-13 04:14:24,475 ERROR "GET / HTTP/1.1" 500 175866 C:\Users\user\AppData\Local\Programs\Python\Python38\lib\site-packages\django\core\servers\basehttp.py None

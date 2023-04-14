@@ -13,22 +13,12 @@ from .forms import PostForm
 from .tasks import send_post_for_subscribers_celery
 from django.core.cache import cache
 
-
 class PostList(ListView):
     model = Post
     template_name = 'news.html'
     context_object_name = 'posts'
     paginate_by = 10
 
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        self.filterset = PostFilter(self.request.GET, queryset)
-        return self.filterset.qs
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['filterset'] = self.filterset
-        return context
 
 class PostDetail(DetailView):
     model = Post
@@ -48,6 +38,7 @@ class PostDetail(DetailView):
             obj = super().get_object(queryset=self.queryset)
             cache.set(f'post-{self.kwargs["pk"]}', obj)
         return obj
+
 
 class PostCreate(PermissionRequiredMixin, CreateView):
     permission_required = 'news.add_post'
@@ -72,10 +63,12 @@ class PostUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Post
     template_name = 'post_edit.html'
 
+
 class PostDelete(DeleteView):
     model = Post
     template_name = 'post_delete.html'
     success_url = reverse_lazy('post_list')
+
 
 @login_required
 def subscribe(request, pk):

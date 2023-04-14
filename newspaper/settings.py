@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 import logging
+from django.conf import settings
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -46,7 +47,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'news.apps.NewsConfig',
+    'news',
     "django_apscheduler",
     'django_dump_load_utf8',
 ]
@@ -62,7 +63,8 @@ MIDDLEWARE = [
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware'
 ]
 
-ROOT_URLCONF = 'news.urls'
+
+ROOT_URLCONF = 'NewsPaper.urls'
 
 TEMPLATES = [
     {
@@ -97,7 +99,7 @@ WSGI_APPLICATION = 'NewsPaper.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db(1).sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -280,3 +282,4 @@ LOGGING = {
         }
     }
 }
+
