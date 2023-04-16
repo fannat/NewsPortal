@@ -1,3 +1,3 @@
 # NewsPortal
 
-This is a django project 
+This is a django project by L
